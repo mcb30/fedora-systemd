@@ -1,5 +1,6 @@
 [Unit]
 After=default.target
+Requires=default.target
 ConditionFileNotEmpty=/etc/cmdline
 
 [Service]
