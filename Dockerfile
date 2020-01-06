@@ -6,6 +6,8 @@ RUN dnf update -y \
     && dnf versionlock systemd \
     && dnf clean all
 
+RUN systemctl mask var-log-journal.mount
+
 COPY cmdline-init cmdline /sbin/
 
 COPY cmdline.service /lib/systemd/system/
