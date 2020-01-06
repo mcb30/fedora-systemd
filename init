@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "$@" > /etc/cmdline
+echo -n "$@" > /etc/cmdline
 exec /lib/systemd/systemd systemd.unit=cmdline.service
