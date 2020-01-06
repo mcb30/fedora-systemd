@@ -1,0 +1,11 @@
+[Unit]
+After=default.target
+
+[Service]
+ExecStart=/sbin/cmdline
+Type=idle
+StandardInput=tty-force
+StandardOutput=inherit
+StandardError=inherit
+IgnoreSIGPIPE=no
+SendSIGHUP=yes
