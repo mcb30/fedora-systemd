@@ -2,6 +2,7 @@ Fedora systemd single-command container
 =======================================
 
 [![Build](https://img.shields.io/github/workflow/status/mcb30/fedora-systemd/Build)](https://github.com/mcb30/fedora-systemd/actions?query=workflow%3ABuild+branch%3Amaster)
+[![Image](https://img.shields.io/docker/image-size/mcb30/fedora-systemd)](https://hub.docker.com/r/mcb30/fedora-systemd/)
 
 This container provides a Fedora environment in which to execute an
 arbitary specified command with all enabled ``systemd`` services
