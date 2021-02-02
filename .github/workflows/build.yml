@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+  schedule:
+    - cron: '30 22 2 * *'
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          sudo docker build -t "${GITHUB_REPOSITORY}" .
+      - name: Publish
+        run: |
+          sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" \
+                            -p "${{ secrets.DOCKER_PASSWORD }}"
+          sudo docker push "${GITHUB_REPOSITORY}"
