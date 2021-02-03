@@ -8,7 +8,7 @@ This container provides a Fedora environment in which to execute an
 arbitary specified command with all enabled ``systemd`` services
 running in the background.  For example:
 
-    podman run -i -t mcb30/fedora-systemd /bin/sh
+    podman run -i -t --systemd=always mcb30/fedora-systemd /bin/sh
 
 The container will shut down cleanly once the specified command exits,
 and the final exit status of the container will reflect the exit
