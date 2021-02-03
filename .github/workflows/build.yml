@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          sudo docker build -t "${GITHUB_REPOSITORY}" .
+          podman build -t "${GITHUB_REPOSITORY}" .
       - name: Publish
         run: |
-          sudo docker login -u "${{ secrets.DOCKER_USERNAME }}" \
-                            -p "${{ secrets.DOCKER_PASSWORD }}"
-          sudo docker push "${GITHUB_REPOSITORY}"
+          podman login -u "${{ secrets.DOCKER_USERNAME }}" \
+                       -p "${{ secrets.DOCKER_PASSWORD }}"
+          podman push "${GITHUB_REPOSITORY}"
