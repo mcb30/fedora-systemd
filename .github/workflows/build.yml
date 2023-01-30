@@ -16,10 +16,16 @@ jobs:
       - name: Build
         run: |
           podman build -t "${GITHUB_REPOSITORY}" .
-      - name: Test
+      - name: Test invocation
         run: |
-          podman run -i -t --rm --systemd=always mcb30/fedora-systemd \
+          podman run -i -t --rm --systemd=always ${GITHUB_REPOSITORY} \
                      /bin/echo "Hello world"
+      - name: Test exit status propagation
+        run: |
+          podman run -i -t --rm --systemd=always ${GITHUB_REPOSITORY} \
+                       return 42 || RC=$?
+          echo Exit status $RC
+          [ $RC -eq 42 ]
       - name: Publish
         if: github.ref == 'refs/heads/master'
         run: |
