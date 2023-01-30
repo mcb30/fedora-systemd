@@ -6,7 +6,7 @@ RUN dnf update -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
     && dnf versionlock systemd \
     && dnf clean all
 
-RUN systemctl mask var-log-journal.mount console-getty systemd-logind
+RUN systemctl mask console-getty systemd-logind
 
 COPY cmdline-init cmdline /sbin/
 
