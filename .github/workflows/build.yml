@@ -15,13 +15,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          sudo podman build -t "${GITHUB_REPOSITORY}" .
+          podman build -t "${GITHUB_REPOSITORY}" .
       - name: Test
         run: |
-          sudo podman run -i -t --rm --systemd=always mcb30/fedora-systemd \
-                          /bin/echo "Hello world"
+          podman run -i -t --rm --systemd=always mcb30/fedora-systemd \
+                     /bin/echo "Hello world"
       - name: Publish
         run: |
-          sudo podman login -u "${{ secrets.DOCKER_USERNAME }}" \
-                            -p "${{ secrets.DOCKER_PASSWORD }}"
-          sudo podman push "${GITHUB_REPOSITORY}"
+          podman login -u "${{ secrets.DOCKER_USERNAME }}" \
+                       -p "${{ secrets.DOCKER_PASSWORD }}"
+          podman push "${GITHUB_REPOSITORY}"
